@@ -1,14 +1,14 @@
-import { join } from "path";
-import { createServer } from "http";
-import express from "express";
-import socketio from "socket.io";
+const path = require('path');
+const http = require('http');
+const express = require('express');
+const socketio = require("socket.io");
 
 const app = express();
-const server = createServer(app);
+const server = http.createServer(app);
 const io = socketio(server);
 
 // set static folder
-app.use(join(__dirname, "public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // run when client connects
 io.on("connection", (socket) => {
@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     io.emit("message", "A user has left the chat");
   });
-  // lisen for chatMessage
+  // listen for chatMessage
   socket.on("chatMessage", (msg) => {
     io.emit("message", msg);
   });
