@@ -1,28 +1,21 @@
 {
-  "name": "Realtime chat",
+  "name": "chat_cord_demo",
   "version": "1.0.0",
-  "description": "Realtime chat with rooms",
+  "description": "real time chat with rooms",
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "build": "nodemon server"
+    "dev": "nodemon server"
   },
+  "repository": "https://github.com/kel7774/chat_cord_demo.git",
+  "author": "Kelli Landry",
+  "license": "MIT",
   "dependencies": {
-    "express": "4.18.2",
-    "moment": "2.29.4",
-    "parcel-bundler": "^1.6.1",
-    "socket.io": "4.5.4"
+    "express": "^4.18.2",
+    "moment": "^2.29.4",
+    "socket.io": "^4.5.4"
   },
   "devDependencies": {
-    "@babel/core": "7.2.0",
-    "typescript": "4.4.4",
-    "nodemon": "2.0.20"
-  },
-  "resolutions": {
-    "@babel/preset-env": "7.13.8"
-  },
-  "keywords": [
-    "javascript",
-    "starter"
-  ]
+    "nodemon": "^2.0.20"
+  }
 }
