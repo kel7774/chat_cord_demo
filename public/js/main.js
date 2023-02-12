@@ -32,8 +32,11 @@ chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // get message text
-  const msg = e.target.elements.msg.value;
-
+  let msg = e.target.elements.msg.value;
+  msg = msg.trim();
+  if(!msg) {
+    return false;
+  }
   // Emit message to server
   socket.emit('chatMessage', msg);
 
@@ -46,10 +49,15 @@ chatForm.addEventListener('submit', (e) => {
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta">${message.username}<span>${message.time}</span></p>
-  <p class="text">
-    ${message.text}
-  </p>`;
+  let p = document.createElement('p');
+  p.classList.add('meta');
+  p.innerText = message.username;
+  p.innerHTML += `<span> ${message.time}</span>`;
+  div.appendChild(p);
+  let para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = message.text;
+  div.appendChild(para);
   document.querySelector('.chat-messages').appendChild(div);
 }
 
